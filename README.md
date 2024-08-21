@@ -36,7 +36,7 @@ Things you may want to cover:
 | last_name          | string              | null: false               | 
 | first_name_kana    | string              | null: false               |  
 | last_name_kana     | string              | null: false               | 
-| date               | date                | null: false               | 
+| birthday           | date                | null: false               | 
  
 ### Association 
 
@@ -58,7 +58,7 @@ Things you may want to cover:
 
 ### Association 
 
-- belongs_to :histories
+- belongs_to :history
  
  
 ## histories table 
@@ -70,9 +70,9 @@ Things you may want to cover:
  
 ### Association 
  
-- belongs_to :items 
-- belongs_to :users 
-- has_one    :addresses
+- belongs_to :item 
+- belongs_to :user 
+- has_one    :address
  
 ## items table 
   
@@ -81,7 +81,7 @@ Things you may want to cover:
 | name               | string     | null: false                    | 
 | feature            | text       | null: false                    |
 | category_id        | integer    | null: false                    | 
-| states_id          | integer    | null: false                    | 
+| status_id          | integer    | null: false                    | 
 | shipping_free_id   | integer    | null: false                    | 
 | address_id         | integer    | null: false                    | 
 | shipping_day_id    | integer    | null: false                    | 
@@ -90,5 +90,5 @@ Things you may want to cover:
  
 ### Association 
  
-- has_one :histories
-- belongs_to :users 
+- has_one :history
+- belongs_to :user
