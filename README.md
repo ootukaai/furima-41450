@@ -35,59 +35,60 @@ Things you may want to cover:
 | first_name         | string              | null: false               | 
 | last_name          | string              | null: false               | 
 | first_name_kana    | string              | null: false               |  
-| last_ame_kana      | string              | null: false               | 
-| birthday           | integer             | null: false               | 
+| last_name_kana     | string              | null: false               | 
+| date               | date                | null: false               | 
  
 ### Association 
 
 * has_many :items 
-* has_many :comments 
-* has_one  :addresses 
+* has_many :histories 
+ 
 
 ## addresses table 
 
 | Column                              | Type       | Options                        | 
 |-------------------------------------|------------|--------------------------------| 
-| post_num                            | integer    | null: false                    | 
-| first_address_id                    | integer    | null: false                    | 
+| post_num                            | string     | null: false                    | 
+| address_id                          | integer    | null: false                    | 
 | second_address                      | string     | null: false                    | 
-| third_address                       | integer    | null: false                    | 
+| third_address                       | string     | null: false                    | 
 | forth_address                       | string     |                                | 
-| tel_num                             | integer    | null: false                    | 
-| histories                           | references | null: false, foreign_key: true | 
+| tel_num                             | string     | null: false                    | 
+| history                             | references | null: false, foreign_key: true | 
 
 ### Association 
 
-- belongs_to :user 
+- belongs_to :histories
  
  
 ## histories table 
  
 | Column      | Type       | Options                        | 
 |-------------|------------|--------------------------------| 
-| items       | references | null: false, foreign_key: true | 
+| item        | references | null: false, foreign_key: true | 
 | user        | references | null: false, foreign_key: true | 
  
 ### Association 
  
 - belongs_to :items 
-- belongs_to :user 
+- belongs_to :users 
+- has_one    :addresses
  
 ## items table 
   
-| Column           | Type       | Options                        | 
-|------------------|------------|--------------------------------| 
-| name             | string     | null: false                    | 
-| feature          | text       | null: false                    |
-| category_id      | integer    | null: false,                   | 
-| states_id        | integer    | null: false,                   | 
-| shipping_free_id | integer    | null: false,                   | 
-| shipping_place_id| integer    | null: false,                   | 
-| shipping_day_id  | integer    | null: false,                   | 
-| price            | integer    | null: false                    | 
-| user             | references | null: false, foreign_key: true | 
+| Column             | Type       | Options                        | 
+|--------------------|------------|--------------------------------| 
+| name               | string     | null: false                    | 
+| feature            | text       | null: false                    |
+| category_id        | integer    | null: false                    | 
+| states_id          | integer    | null: false                    | 
+| shipping_free_id   | integer    | null: false                    | 
+| address_id         | integer    | null: false                    | 
+| shipping_day_id    | integer    | null: false                    | 
+| price              | integer    | null: false                    | 
+| user               | references | null: false, foreign_key: true | 
  
 ### Association 
  
-- belongs_to :histories
-- belongs_to :user 
+- has_one :histories
+- belongs_to :users 
