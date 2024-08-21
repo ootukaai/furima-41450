@@ -32,42 +32,39 @@ Things you may want to cover:
 | nickname           | string              | null: false,              | 
 | email              | string              | null: false, unique: true | 
 | encrypted_password | string              | null: false               | 
-| first-name         | string              | null: false               | 
-| last-name          | string              | null: false               | 
-| first-name-kana    | string              | null: false               |  
-| last-name-kana     | string              | null: false               | 
+| first_name         | string              | null: false               | 
+| last_name          | string              | null: false               | 
+| first_name_kana    | string              | null: false               |  
+| last_ame_kana      | string              | null: false               | 
 | birthday           | integer             | null: false               | 
  
 ### Association 
 
 * has_many :items 
 * has_many :comments 
-* has_one  :order 
+* has_one  :addresses 
 
-## orders table 
+## addresses table 
 
 | Column                              | Type       | Options                        | 
 |-------------------------------------|------------|--------------------------------| 
-| credit-num                          | integer    | null: false                    | 
-| limit                               | integer    | null: false                    | 
-| cord                                | integer    | null: false                    | 
-| post-num                            | integer    | null: false                    | 
-| first-address_id                    | integer    | null: false                    | 
-| second-address                      | string     | null: false                    | 
-| third-address                       | integer    | null: false                    | 
-| forth-address                       | string     |                                | 
-| tel-num                             | integer    | null: false                    | 
-| user                                | references | null: false, foreign_key: true | 
+| post_num                            | integer    | null: false                    | 
+| first_address_id                    | integer    | null: false                    | 
+| second_address                      | string     | null: false                    | 
+| third_address                       | integer    | null: false                    | 
+| forth_address                       | string     |                                | 
+| tel_num                             | integer    | null: false                    | 
+| histories                           | references | null: false, foreign_key: true | 
+
 ### Association 
 
 - belongs_to :user 
  
  
-## comments table 
+## histories table 
  
 | Column      | Type       | Options                        | 
 |-------------|------------|--------------------------------| 
-| content     | text       | null: false                    | 
 | items       | references | null: false, foreign_key: true | 
 | user        | references | null: false, foreign_key: true | 
  
@@ -80,7 +77,8 @@ Things you may want to cover:
   
 | Column           | Type       | Options                        | 
 |------------------|------------|--------------------------------| 
-| nickname         | string     | null: false                    | 
+| name             | string     | null: false                    | 
+| feature          | text       | null: false                    |
 | category_id      | integer    | null: false,                   | 
 | states_id        | integer    | null: false,                   | 
 | shipping_free_id | integer    | null: false,                   | 
@@ -91,5 +89,5 @@ Things you may want to cover:
  
 ### Association 
  
-- has_many   :comment 
+- belongs_to :histories
 - belongs_to :user 
