@@ -8,9 +8,12 @@ RSpec.describe User, type: :model do
   end
 
   describe 'ユーザー新規登録' do
+    context '新規登録できるとき' do
     it 'nicknameとemail、passwordとpassword_confirmation、first_nameとlast_name、first_name_kanaとlast_name_kana、birthdayが存在すれば登録できる' do
       expect(@user).to be_valid
     end
+  end
+  context '新規登録できないとき' do
     it 'nicknameが空では登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -101,12 +104,22 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Last name kana is invalid")
     end
-    it'passwordは、半角英数字混合でないと登録できない' do
+    it'英字のみのパスワードでは登録できない' do
       @user.password = "aaaaa"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is invalid")
     end
-   
+   it'数字のみのパスワードでは登録できない' do
+      @user.password = "11111"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+    it'全角文字を含むパスワードでは登録できない' do
+      @user.password = "ｓｓｓｓｓ１１１"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is invalid")
+    end
+  end
 end
 
   
