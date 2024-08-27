@@ -5,7 +5,7 @@ RSpec.describe Item, type: :model do
 
   before do
     @user = FactoryBot.create(:user)
-    @item = FactoryBot.build(:item, user: @user)
+    @item = FactoryBot.build(:item)
 
     end
   
@@ -97,6 +97,11 @@ RSpec.describe Item, type: :model do
     @item.valid?
     expect(@item.errors.full_messages).to include("Shipping day can't be blank") 
    end
+   it 'userが紐付いていないと保存できない' do
+    @item.user = nil
+    @item.valid?
+    expect(@item.errors.full_messages).to include('User must exist')
+  end
 end
 
   
