@@ -14,6 +14,10 @@ RSpec.describe HistoryPrefecture, type: :model do
     it 'すべての値が存在すれば登録できる' do
       expect(@history_prefecture).to be_valid
     end
+    it 'forth_addressが空でも登録できる' do
+      @history_prefecture.forth_address = ""
+      expect(@history_prefecture).to be_valid
+    end
   end 
   context '商品出品できないとき' do
     it 'first_address_idが空では登録できない' do
@@ -51,6 +55,11 @@ RSpec.describe HistoryPrefecture, type: :model do
       @history_prefecture.valid?
       expect(@history_prefecture.errors.full_messages).to include("Tel num Phone number is too short")
     end
+    it 'tel_numは11桁以下でないと登録できない' do
+      @history_prefecture.tel_num = "1234567891012"
+      @history_prefecture.valid?
+      expect(@history_prefecture.errors.full_messages).to include("Tel num Phone number is too short")
+    end
     it 'tel_numは半角英数字でないと登録できない' do
       @history_prefecture.tel_num = "abcdefg1234"
       @history_prefecture.valid?
@@ -66,6 +75,22 @@ RSpec.describe HistoryPrefecture, type: :model do
       @history_prefecture.valid?
       expect(@history_prefecture.errors.full_messages).to include("Token can't be blank")
     end
+    it 'user_idが空では登録できない' do
+      @history_prefecture.user_id = ''
+      @history_prefecture.valid?
+      expect(@history_prefecture.errors.full_messages).to include("User can't be blank")
+    end
+    it 'item_idが空では登録できない' do
+      @history_prefecture.item_id = ''
+      @history_prefecture.valid?
+      expect(@history_prefecture.errors.full_messages).to include("Item can't be blank")
+    end
+        it 'third_addressが空では登録できない' do
+      @history_prefecture.third_address = ''
+      @history_prefecture.valid?
+      expect(@history_prefecture.errors.full_messages).to include("Third address can't be blank")
+    end
+
    end
   end
 end

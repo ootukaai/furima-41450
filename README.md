@@ -49,7 +49,7 @@ Things you may want to cover:
 | Column                              | Type       | Options                        | 
 |-------------------------------------|------------|--------------------------------| 
 | post_num                            | string     | null: false                    | 
-| address_id                          | integer    | null: false                    | 
+| first_address_id                    | integer    | null: false                    | 
 | second_address                      | string     | null: false                    | 
 | third_address                       | string     | null: false                    | 
 | forth_address                       | string     |                                | 
