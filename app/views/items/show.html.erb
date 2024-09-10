@@ -26,7 +26,7 @@
     </div>
 
     
-    <% if user_signed_in? &&!(@history.present? && @history.any? { |history| history.item_id == @item.id })%>
+    <% if user_signed_in? && @item.history.present?%>
     
       <% if current_user.id == @item.user_id %>
       <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
