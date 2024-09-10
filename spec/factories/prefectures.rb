@@ -10,8 +10,7 @@ FactoryBot.define do
     post_num { "600-3333" }
     tel_num { "60033333333" }
     token {"tok_abcdefghijk00000000000000000"}
-    user_id  { 2 }
-    item_id  { 2 }
+    
 
   end
 
