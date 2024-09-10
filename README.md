@@ -44,7 +44,7 @@ Things you may want to cover:
 * has_many :histories 
  
 
-## addresses table 
+## prefecture table 
 
 | Column                              | Type       | Options                        | 
 |-------------------------------------|------------|--------------------------------| 
