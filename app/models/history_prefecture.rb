@@ -6,7 +6,7 @@ class HistoryPrefecture
   with_options presence: true do
   validates :user_id
   validates :item_id
-  validates :first_address_id,numericality: { other_than: 2 , message: "can't be blank" }
+  validates :first_address_id,numericality: { other_than: 0 , message: "can't be blank" }
   validates :second_address
   validates :third_address
   validates :post_num, format: { with: /\A\d{3}-\d{4}\z/, message: "Enter it as follows (e.g. 123-4567)" }
